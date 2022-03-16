@@ -2,13 +2,27 @@ import styled from "styled-components";
 
 export default function Home(){
     return (
-        <>
-            <img src="./assets/logo.png" />
-            <img src="./assets/logo-name.png" />
+        <Container>
+            <Logo>
+                <img src="./assets/logo.png" />
+                <img src="./assets/logo-name.png" />
+            </Logo>
             <StartButton>Iniciar Recall!</StartButton>
-        </>
+        </Container>
     );
 }
+
+const Container = styled.div`
+    padding: 90px 30px;
+`
+
+const Logo = styled.div`
+    margin-bottom: 74px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+`
 
 const StartButton = styled.button`
     width: 141px;
