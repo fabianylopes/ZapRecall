@@ -14,7 +14,7 @@ export default function Answer(){
 }
 
 const AnswerCard = styled.div`
-    width: 340px;
+    width: 182px;
     height: 80px;
     padding: 13px 4px 3px 4px;
     margin-bottom: 14px;
@@ -45,9 +45,13 @@ const Button = styled.button`
     height: 24px;
     border-radius: 5px;
     background-color: #FF3030;
+    border: none;
+    cursor: pointer;
 
+    font-family: 'Recursive', sans-serif;
     color: #fff;
     font-weight: 400;
     font-size: 7px;
     line-height: 8px;
+    
 `

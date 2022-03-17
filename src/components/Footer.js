@@ -1,27 +1,12 @@
 import styled from "styled-components";
+import { questions } from "./Flashcards";
 
 export default function Footer(){
     return (
         <FooterBar>    
-            0/4 CONCLUÍDOS
+            {questions[0].deck - 1}/{questions.length} CONCLUÍDOS
 
-            {/* <Result>
-                <Status>
-                    <img src="./assets/party.png"/>
-                    PARABÉNS!
-                    <Text>Você não esqueceu de nenhum flashcard!</Text>
-                </Status>
-            </Result> */}
-
-            {/* <Result>
-                <Status>
-                    <img src="./assets/sad.png"/>
-                    PUTZ!
-                    <Text>Ainda faltaram alguns... Mas não desanime!</Text>
-                </Status>
-            </Result>
-
-            <Icons>
+            {/* <Icons>
                 <img src="./assets/x.png"/>
                 <img src="./assets/almost.png"/>
                 <img src="./assets/check.png"/>
@@ -50,14 +35,4 @@ const Icons = styled.div`
 
 `
 
-const Status = styled.div`
 
-`
-
-const Text = styled.h1`
-
-`
-
-const Result = styled.div`
-
-`

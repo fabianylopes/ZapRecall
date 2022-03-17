@@ -8,3 +8,7 @@ const questions = [
     "Usamos props para __",
     "Usamos estado (state) para __"
 ];
+
+                {/* <img src="./assets/x.png"/>
+                <img src="./assets/almost.png"/>
+            <img src="./assets/check.png"/> */}

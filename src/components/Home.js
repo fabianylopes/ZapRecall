@@ -1,13 +1,15 @@
 import styled from "styled-components";
+//import logo from "../../public/assets/logo.png";
+//import { useState } from "react";
 
-export default function Home(){
+export default function Home({ setStartRecall }){
     return (
         <Container>
             <Logo>
-                <img src="./assets/logo.png" />
-                <img src="./assets/logo-name.png" />
+                <img src="./assets/logo.png"/>
+                <Text>ZapRecall</Text>
             </Logo>
-            <StartButton>Iniciar Recall!</StartButton>
+            <StartButton onClick={() => setStartRecall('container')}>Iniciar Recall!</StartButton>
         </Container>
     );
 }
@@ -22,6 +24,14 @@ const Logo = styled.div`
     flex-direction: column;
     align-items: center;
     gap: 10px;
+`
+
+const Text = styled.h1`
+    font-family: 'Righteous', cursive;
+    color: #fff;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 31px;
 `
 
 const StartButton = styled.button`

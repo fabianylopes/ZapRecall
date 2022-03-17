@@ -1,10 +1,15 @@
 import styled from "styled-components";
+import { questions } from "./Flashcards";
+import { useState } from "react";
 
 export default function Question(){
+
+    const [showAnswer, setShowAnswer] = useState('turned');
+
     return (
         <QuestionCard>
-            <Text>O que é JSX?</Text>
-            <Arrow>
+            <Text>{questions[0].question}</Text>
+            <Arrow onClick={() => setShowAnswer('answer')}>
                 <img src="./assets/setinha.png"/>
             </Arrow>
         </QuestionCard>
@@ -12,7 +17,7 @@ export default function Question(){
 }
 
 const QuestionCard = styled.div`
-    width: 340px;
+    width: 182px;
     height: 80px;
     padding: 13px 8px 7px 6px;
     margin-bottom: 14px;
@@ -33,6 +38,8 @@ const Text = styled.h1`
 `
 
 const Arrow = styled.div`
+    cursor: pointer;
+
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
