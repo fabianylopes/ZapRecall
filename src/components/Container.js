@@ -1,14 +1,14 @@
 import styled from "styled-components";
 import Footer from "./Footer";
 import Header from "./Header";
-import Flashcards from "./Flashcards";
+import Deck from "./Deck";
 
 
 export default function Container(){
     return (
         <>
             <Header/>
-            <Flashcards/>
+            <Deck/>
             <Footer/>
         </>
     );

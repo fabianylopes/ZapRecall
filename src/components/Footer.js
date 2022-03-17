@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { questions } from "./Flashcards";
+import { questions } from './Deck';
 
 export default function Footer(){
     return (
