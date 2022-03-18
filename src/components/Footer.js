@@ -1,16 +1,9 @@
 import styled from "styled-components";
-import { questions } from './Deck';
 
-export default function Footer(){
+export default function Footer({ currentQuestion, totalQuestions }){
     return (
         <FooterBar>    
-            {questions[0].deck - 1}/{questions.length} CONCLUÍDOS
-
-            {/* <Icons>
-                <img src="./assets/x.png"/>
-                <img src="./assets/almost.png"/>
-                <img src="./assets/check.png"/>
-            </Icons> */}
+            {currentQuestion}/{totalQuestions} CONCLUÍDOS
         </FooterBar>
     );
 }
@@ -30,9 +23,3 @@ const FooterBar = styled.h1`
     justify-content: center;
     align-items: center;
 `
-
-const Icons = styled.div`
-
-`
-
-

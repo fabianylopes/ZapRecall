@@ -1,6 +1,4 @@
 import styled from "styled-components";
-//import logo from "../../public/assets/logo.png";
-//import { useState } from "react";
 
 export default function Home({ setStartRecall }){
     return (
@@ -9,7 +7,7 @@ export default function Home({ setStartRecall }){
                 <img src="./assets/logo.png"/>
                 <Text>ZapRecall</Text>
             </Logo>
-            <StartButton onClick={() => setStartRecall('container')}>Iniciar Recall!</StartButton>
+            <StartButton onClick={() => setStartRecall('deck')}>Iniciar Recall!</StartButton>
         </Container>
     );
 }
