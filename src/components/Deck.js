@@ -1,18 +1,29 @@
-import React from 'react'
+import { useState } from "react";
 import Flashcard from './Flashcard';
 import Footer from './Footer';
 import Header from './Header';
 
 export default function Deck() {
+
+    //const [footerIcon, setFooterIcon] = useState('');
+    const [currentQuestion, setCurrentQuestion] = useState(0);
+
+
   return (
     <>
         <Header/>
         {questions.map((q => {
             return (
-                <Flashcard key={q.card} cardNumber={q.card} question={q.question} answer={q.answer} />
+                <Flashcard 
+                currentQuestion={currentQuestion} 
+                setCurrentQuestion={setCurrentQuestion} 
+                key={q.card} 
+                cardNumber={q.card} 
+                question={q.question} 
+                answer={q.answer} />
             )
         })) }
-        <Footer currentQuestion={0} totalQuestions={8}/>
+        <Footer currentQuestion={currentQuestion} totalQuestions={questions.length}/>
     </>
   );
 }

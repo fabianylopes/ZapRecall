@@ -2,16 +2,17 @@ import styled from "styled-components";
 import { useState } from "react";
 
 export default function Flashcard(props) {
-    const { cardNumber, question, answer } = props;
+    const { cardNumber, question, answer, currentQuestion, setCurrentQuestion } = props;
 
     const [content, setContent] = useState('title');
-
+    const [result, setResult] = useState('');
+    const [icon, setIcon] = useState('go');
 
     if(content === 'title'){ 
         return (
             <Card onClick={() => setContent('question')}>
-                <Text className="title">Pergunta {cardNumber}</Text>
-                <img src="./assets/go.png"/>
+                <Text className={`"title" ${result}`}>Pergunta {cardNumber}</Text>
+                <img src={`./assets/${icon}.png`}/>
             </Card>
         );
     }else if (content === 'question'){
@@ -28,16 +29,22 @@ export default function Flashcard(props) {
             <AnswerCard>
                 <Text>{answer}</Text>
                 <ButtonsBox>   
-                    <Button className="red-button">Não lembrei</Button>
-                    <Button className="yellow-button">Quase não lembrei</Button>
-                    <Button className="green-button">Zap!</Button>
+                    <Button className="red-button" onClick={() => answered('wrong')}>Não lembrei</Button>
+                    <Button className="yellow-button" onClick={() => answered('almost')}>Quase não lembrei</Button>
+                    <Button className="green-button" onClick={() => answered('zap')}>Zap!</Button>
                 </ButtonsBox>
             </AnswerCard>
         );
     }
+
+    function answered(status){
+        setContent('title');
+        setResult(status);
+        setIcon(status);
+        setCurrentQuestion(currentQuestion + 1);
+    }
+
 }
-
-
 
 const Card = styled.div`
     width: 182px;
@@ -74,7 +81,7 @@ const QuestionCard = styled.div`
 `
 
 const Text = styled.h1`
-    color: #333333;
+    //color: #333333;
     font-weight: 400;
     font-size: 12px;
     line-height: 14px;

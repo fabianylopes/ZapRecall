@@ -12,8 +12,18 @@ body {
     font-weight: 700;
 }
 
-.status {
+.wrong {
     color: #FF3030;
+    text-decoration-line: line-through;
+}
+
+.almost {
+    color: #FF922E;
+    text-decoration-line: line-through;
+}
+
+.zap {
+    color: #2FBE34;
     text-decoration-line: line-through;
 }
 
@@ -29,8 +39,3 @@ body {
     background-color: #2FBE34;
 }
 
-/* .root {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-} */

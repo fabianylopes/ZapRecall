@@ -1,9 +1,16 @@
 import styled from "styled-components";
+import { useState } from "react";
 
 export default function Footer({ currentQuestion, totalQuestions }){
+
+    //const [outcome, setOutcome] = useState('default');
+
     return (
         <FooterBar>    
             {currentQuestion}/{totalQuestions} CONCLUÍDOS
+            <Icons>
+                <img src={`./assets/zap.png`}/>
+            </Icons>
         </FooterBar>
     );
 }
@@ -22,4 +29,11 @@ const FooterBar = styled.h1`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+`
+
+const Icons = styled.div`
+    display: flex;
+    img {
+        margin: 3px;
+    }
 `
