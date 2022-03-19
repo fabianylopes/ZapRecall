@@ -9,7 +9,6 @@ export default function Flashcard(props) {
     const [content, setContent] = useState('title');
     const [result, setResult] = useState('');
     const [icon, setIcon] = useState('go');
-    
 
     if(content === 'title'){ 
         return (
@@ -38,10 +37,7 @@ export default function Flashcard(props) {
                 </ButtonsBox>
             </AnswerCard>
         );
-    }
-
-    
-    
+    }  
 
     function answered(status){
         setContent('title');
@@ -59,6 +55,12 @@ export default function Flashcard(props) {
         }else if(currentQuestion === 7 && congrats < 8){
             setOutcome('failure');
         }
+
+        IconFooter(status);
+    }
+
+    function IconFooter(status){
+        return <img src={`./assets/${status}.png`}/>;
     }
     
 }
@@ -88,7 +90,7 @@ const QuestionCard = styled.div`
     height: 130px;
     padding: 13px 8px 7px 6px;
     margin-bottom: 14px;
-    background-color: #fff;
+    background-color: #FFFFD4;
     box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
     border-radius: 5px;
 
@@ -116,7 +118,7 @@ const AnswerCard = styled.div`
     height: 130px;
     padding: 13px 4px 3px 4px;
     margin-bottom: 14px;
-    background-color: #fff;
+    background-color: #FFFFD4;
     box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
     border-radius: 5px;
 

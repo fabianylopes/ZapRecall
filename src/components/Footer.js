@@ -1,20 +1,14 @@
 import styled from "styled-components";
 //import { useState } from "react";
 
-export default function Footer({ currentQuestion, totalQuestions, outcome, footerIcon }){
+export default function Footer({ currentQuestion, totalQuestions, outcome }){
     
-    // function IconFooter(status){
-    //     {(footerIcon === 'icon') && iconFooter('zap')}
-
-    //     return <img src={`./assets/${status}.png`}/>;
-    // }
-
     if (outcome === 'default'){
         return (
             <FooterBar className="footer">    
                 {currentQuestion}/{totalQuestions} CONCLUÍDOS
                 <Icons>
-                    {/* <IconFooter/> */}
+                    <img src={`./assets/zap.png`}/>
                 </Icons>
             </FooterBar>
         );
