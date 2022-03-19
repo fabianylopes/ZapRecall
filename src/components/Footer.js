@@ -1,23 +1,51 @@
 import styled from "styled-components";
-import { useState } from "react";
+//import { useState } from "react";
 
-export default function Footer({ currentQuestion, totalQuestions }){
+export default function Footer({ currentQuestion, totalQuestions, outcome, footerIcon }){
+    
+    function iconFooter(status){
+        let icon = <img src={`./assets/${status}.png`}/>
+        
+        return icon;
+    }
 
-    //const [outcome, setOutcome] = useState('default');
-
-    return (
-        <FooterBar>    
-            {currentQuestion}/{totalQuestions} CONCLUÍDOS
-            <Icons>
-                <img src={`./assets/zap.png`}/>
-            </Icons>
-        </FooterBar>
-    );
+    if (outcome === 'default'){
+        return (
+            <FooterBar className="footer">    
+                {currentQuestion}/{totalQuestions} CONCLUÍDOS
+                <Icons>
+                    {(footerIcon === 'icon') && iconFooter('zap')}
+                </Icons>
+            </FooterBar>
+        );
+    }else if (outcome === 'success'){
+        return (
+            <FooterBar className="end-footer">
+                🥳 PARABÉNS!
+                <Text>Você não esqueceu de <br/>nenhum flashcard!</Text>
+                {currentQuestion}/{totalQuestions} CONCLUÍDOS
+                <Icons>
+                    <img src={`./assets/zap.png`}/>
+                </Icons>
+            </FooterBar>
+        );
+    }else if (outcome === 'failure'){
+        return (
+            <FooterBar className="end-footer">
+                😥 PUTZ!
+                <Text>Ainda faltaram alguns... <br/>Mas não desanime!</Text>
+                {currentQuestion}/{totalQuestions} CONCLUÍDOS
+                <Icons>
+                    <img src={`./assets/zap.png`}/>
+                </Icons>
+            </FooterBar>
+        );
+    }
 }
 
 const FooterBar = styled.h1`
     width: 100vw;
-    height: 75px;
+    padding: 15px 65px 10px 65px;
     background-color: #fff;
     box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.05);
     position: fixed;
@@ -27,13 +55,20 @@ const FooterBar = styled.h1`
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
 `
 
 const Icons = styled.div`
     display: flex;
     img {
-        margin: 3px;
+        width: 23px;
+        margin: 5px;
     }
+`
+
+const Text = styled.h1`
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
 `

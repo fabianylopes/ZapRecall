@@ -1,12 +1,15 @@
 import styled from "styled-components";
 import { useState } from "react";
 
+
+
 export default function Flashcard(props) {
-    const { cardNumber, question, answer, currentQuestion, setCurrentQuestion } = props;
+    const { cardNumber, question, answer, currentQuestion, setCurrentQuestion, setOutcome, setFooterIcon } = props;
 
     const [content, setContent] = useState('title');
     const [result, setResult] = useState('');
     const [icon, setIcon] = useState('go');
+    
 
     if(content === 'title'){ 
         return (
@@ -20,7 +23,7 @@ export default function Flashcard(props) {
             <QuestionCard>
                 <Text>{question}</Text>
                 <Arrow onClick={() => setContent('answer')}>
-                    <img src="./assets/setinha.png"/>
+                    <img src="./assets/arrow.png"/>
                 </Arrow>
             </QuestionCard>
         );
@@ -37,20 +40,28 @@ export default function Flashcard(props) {
         );
     }
 
+    
+
     function answered(status){
         setContent('title');
         setResult(status);
         setIcon(status);
         setCurrentQuestion(currentQuestion + 1);
+        setFooterIcon(status);
+       
+                
+        if(currentQuestion === 8){
+            setOutcome('success');
+        }
     }
-
+    
 }
 
 const Card = styled.div`
-    width: 182px;
-    height: 40px;
+    width: 300px;
+    height: 65px;
     border-radius: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 25px;
     background-color: #fff;
     box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
     padding-right: 16px;
@@ -67,8 +78,8 @@ const Card = styled.div`
 `
 
 const QuestionCard = styled.div`
-    width: 182px;
-    height: 80px;
+    width: 300px;
+    height: 130px;
     padding: 13px 8px 7px 6px;
     margin-bottom: 14px;
     background-color: #fff;
@@ -81,10 +92,9 @@ const QuestionCard = styled.div`
 `
 
 const Text = styled.h1`
-    //color: #333333;
     font-weight: 400;
-    font-size: 12px;
-    line-height: 14px;
+    font-size: 18px;
+    line-height: 22px;
 `
 
 const Arrow = styled.div`
@@ -96,8 +106,8 @@ const Arrow = styled.div`
 `
 
 const AnswerCard = styled.div`
-    width: 182px;
-    height: 80px;
+    width: 300px;
+    height: 130px;
     padding: 13px 4px 3px 4px;
     margin-bottom: 14px;
     background-color: #fff;
@@ -116,8 +126,8 @@ const ButtonsBox = styled.div`
 `
 
 const Button = styled.button`
-    width: 55px;
-    height: 24px;
+    width: 85px;
+    height: 37px;
     border-radius: 5px;
     border: none;
     cursor: pointer;
@@ -125,6 +135,6 @@ const Button = styled.button`
     font-family: 'Recursive', sans-serif;
     color: #fff;
     font-weight: 400;
-    font-size: 7px;
-    line-height: 8px;
+    font-size: 12px;
+    line-height: 14px;
 `
