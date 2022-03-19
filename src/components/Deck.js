@@ -23,7 +23,8 @@ export default function Deck() {
                 key={q.card} 
                 cardNumber={q.card} 
                 question={q.question} 
-                answer={q.answer} 
+                answer={q.answer}
+                setFooterIcon={setFooterIcon} 
                 />
             )
         })) }
@@ -31,7 +32,7 @@ export default function Deck() {
         currentQuestion={currentQuestion} 
         totalQuestions={questions.length}
         outcome={outcome}
-        setOutcome={setOutcome} 
+        footerIcon={footerIcon}
         />
     </Container>
   );

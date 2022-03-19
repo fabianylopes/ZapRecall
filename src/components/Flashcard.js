@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useState } from "react";
 
-
+let congrats = 0;
 
 export default function Flashcard(props) {
     const { cardNumber, question, answer, currentQuestion, setCurrentQuestion, setOutcome, setFooterIcon } = props;
@@ -41,17 +41,23 @@ export default function Flashcard(props) {
     }
 
     
+    
 
     function answered(status){
         setContent('title');
         setResult(status);
         setIcon(status);
         setCurrentQuestion(currentQuestion + 1);
-        setFooterIcon(status);
-       
+        setFooterIcon('icon');
+        
+        if(status === 'zap' || status === 'almost'){
+            congrats++;
+        }
                 
-        if(currentQuestion === 8){
+        if(currentQuestion === 7 && congrats === 8){
             setOutcome('success');
+        }else if(currentQuestion === 7 && congrats < 8){
+            setOutcome('failure');
         }
     }
     

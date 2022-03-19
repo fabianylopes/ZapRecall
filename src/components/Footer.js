@@ -3,18 +3,18 @@ import styled from "styled-components";
 
 export default function Footer({ currentQuestion, totalQuestions, outcome, footerIcon }){
     
-    function iconFooter(status){
-        let icon = <img src={`./assets/${status}.png`}/>
-        
-        return icon;
-    }
+    // function IconFooter(status){
+    //     {(footerIcon === 'icon') && iconFooter('zap')}
+
+    //     return <img src={`./assets/${status}.png`}/>;
+    // }
 
     if (outcome === 'default'){
         return (
             <FooterBar className="footer">    
                 {currentQuestion}/{totalQuestions} CONCLUÍDOS
                 <Icons>
-                    {(footerIcon === 'icon') && iconFooter('zap')}
+                    {/* <IconFooter/> */}
                 </Icons>
             </FooterBar>
         );
@@ -43,7 +43,7 @@ export default function Footer({ currentQuestion, totalQuestions, outcome, foote
     }
 }
 
-const FooterBar = styled.h1`
+const FooterBar = styled.div`
     width: 100vw;
     padding: 15px 65px 10px 65px;
     background-color: #fff;
@@ -67,7 +67,7 @@ const Icons = styled.div`
     }
 `
 
-const Text = styled.h1`
+const Text = styled.h2`
     font-weight: 400;
     font-size: 18px;
     line-height: 22px;
