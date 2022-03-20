@@ -1,11 +1,15 @@
 body {
     font-family: 'Recursive', sans-serif;
     background-color: #FB6B6B;
-    padding-bottom: 170px;
+    padding-bottom: 244px;
     
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.bold {
+    font-weight: 700;
 }
 
 .title {
@@ -41,7 +45,7 @@ body {
 }
 
 .end-footer {
-    height: 170px;
+    height: 244px;
 }
 
 .footer {

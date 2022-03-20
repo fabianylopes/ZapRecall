@@ -28,7 +28,7 @@ const Text = styled.h1`
     font-family: 'Righteous', cursive;
     color: #fff;
     font-weight: 400;
-    font-size: 45px;
+    font-size: 36px;
     line-height: 45px;
     margin-left: 10px;
 `

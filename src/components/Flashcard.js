@@ -52,8 +52,10 @@ export default function Flashcard(props) {
                 
         if(currentQuestion === 7 && congrats === 8){
             setOutcome('success');
+            congrats = 0;
         }else if(currentQuestion === 7 && congrats < 8){
             setOutcome('failure');
+            congrats = 0;
         }
 
     }  
@@ -110,7 +112,7 @@ const Arrow = styled.div`
 
 const AnswerCard = styled.div`
     width: 300px;
-    height: 130px;
+    min-height: 130px;
     padding: 13px 4px 3px 4px;
     margin-bottom: 14px;
     background-color: #FFFFD4;
