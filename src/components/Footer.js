@@ -1,14 +1,14 @@
 import styled from "styled-components";
-//import { useState } from "react";
 
-export default function Footer({ currentQuestion, totalQuestions, outcome }){
+export default function Footer(props){
+    const { currentQuestion, totalQuestions, outcome, footerIcon } = props;
     
     if (outcome === 'default'){
         return (
             <FooterBar className="footer">    
                 {currentQuestion}/{totalQuestions} CONCLUÍDOS
                 <Icons>
-                    <img src={`./assets/zap.png`}/>
+                    {footerIcon.map((status) => (<AddFooterIcon status={status} />))}
                 </Icons>
             </FooterBar>
         );
@@ -19,7 +19,7 @@ export default function Footer({ currentQuestion, totalQuestions, outcome }){
                 <Text>Você não esqueceu de <br/>nenhum flashcard!</Text>
                 {currentQuestion}/{totalQuestions} CONCLUÍDOS
                 <Icons>
-                    <img src={`./assets/zap.png`}/>
+                    {footerIcon.map((status) => (<AddFooterIcon status={status} />))}
                 </Icons>
             </FooterBar>
         );
@@ -30,11 +30,15 @@ export default function Footer({ currentQuestion, totalQuestions, outcome }){
                 <Text>Ainda faltaram alguns... <br/>Mas não desanime!</Text>
                 {currentQuestion}/{totalQuestions} CONCLUÍDOS
                 <Icons>
-                    <img src={`./assets/zap.png`}/>
+                    {footerIcon.map((status) => (<AddFooterIcon status={status} />))}
                 </Icons>
             </FooterBar>
         );
     }
+}
+
+function AddFooterIcon({ status }){
+    return <img src={`./assets/${status}.png`} alt="icone"/>;
 }
 
 const FooterBar = styled.div`

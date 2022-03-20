@@ -4,17 +4,17 @@ import { useState } from "react";
 let congrats = 0;
 
 export default function Flashcard(props) {
-    const { cardNumber, question, answer, currentQuestion, setCurrentQuestion, setOutcome, setFooterIcon } = props;
+    const { idCard, question, answer, currentQuestion, setCurrentQuestion, setOutcome, footerIcon, setFooterIcon } = props;
 
     const [content, setContent] = useState('title');
     const [result, setResult] = useState('');
-    const [icon, setIcon] = useState('go');
+    const [iconCard, setIconCard] = useState('go');
 
     if(content === 'title'){ 
         return (
             <Card onClick={() => setContent('question')}>
-                <Text className={`"title" ${result}`}>Pergunta {cardNumber}</Text>
-                <img src={`./assets/${icon}.png`}/>
+                <Text className={`"title" ${result}`}>Pergunta {idCard}</Text>
+                <img src={`./assets/${iconCard}.png`} alt="icone"/>
             </Card>
         );
     }else if (content === 'question'){
@@ -22,7 +22,7 @@ export default function Flashcard(props) {
             <QuestionCard>
                 <Text>{question}</Text>
                 <Arrow onClick={() => setContent('answer')}>
-                    <img src="./assets/arrow.png"/>
+                    <img src="./assets/arrow.png"  alt="icone"/>
                 </Arrow>
             </QuestionCard>
         );
@@ -31,20 +31,20 @@ export default function Flashcard(props) {
             <AnswerCard>
                 <Text>{answer}</Text>
                 <ButtonsBox>   
-                    <Button className="red-button" onClick={() => answered('wrong')}>Não lembrei</Button>
-                    <Button className="yellow-button" onClick={() => answered('almost')}>Quase não lembrei</Button>
-                    <Button className="green-button" onClick={() => answered('zap')}>Zap!</Button>
+                    <Button className="red-button" onClick={() => handleAnswered('wrong')}>Não lembrei</Button>
+                    <Button className="yellow-button" onClick={() => handleAnswered('almost')}>Quase não lembrei</Button>
+                    <Button className="green-button" onClick={() => handleAnswered('zap')}>Zap!</Button>
                 </ButtonsBox>
             </AnswerCard>
         );
     }  
 
-    function answered(status){
+    function handleAnswered(status){
         setContent('title');
         setResult(status);
-        setIcon(status);
+        setIconCard(status);
         setCurrentQuestion(currentQuestion + 1);
-        setFooterIcon('icon');
+        setFooterIcon([...footerIcon, status]);
         
         if(status === 'zap' || status === 'almost'){
             congrats++;
@@ -56,12 +56,7 @@ export default function Flashcard(props) {
             setOutcome('failure');
         }
 
-        IconFooter(status);
-    }
-
-    function IconFooter(status){
-        return <img src={`./assets/${status}.png`}/>;
-    }
+    }  
     
 }
 

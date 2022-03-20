@@ -6,8 +6,8 @@ import Header from './Header';
 import { questions } from "./Data";
 
 export default function Deck() {
-    const [footerIcon, setFooterIcon] = useState('');
     const [currentQuestion, setCurrentQuestion] = useState(0);
+    const [footerIcon, setFooterIcon] = useState([]);
     const [outcome, setOutcome] = useState('default');
     
     return (
@@ -21,13 +21,14 @@ export default function Deck() {
                     setCurrentQuestion={setCurrentQuestion}
                     setOutcome={setOutcome} 
                     key={q.id} 
-                    cardNumber={q.id} 
+                    idCard={q.id} 
                     question={q.question} 
                     answer={q.answer}
+                    footerIcon={footerIcon}
                     setFooterIcon={setFooterIcon} 
                     />
                 )
-            })) }
+            }))}
 
             <Footer 
             currentQuestion={currentQuestion} 

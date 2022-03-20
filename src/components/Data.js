@@ -33,15 +33,7 @@ const questions = [
     }  
 ];
 
-function shuffle(){
-    for (let i = 0; i < questions.length; i++) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [questions[i], questions[j]] = [questions[j], questions[i]];
-       }
-    return questions;
-}
-
-shuffle();
+questions.sort(() => Math.random() - 0.5);
 
 for (let i = 0; i < questions.length; i++) {
     questions[i] = {...questions[i], id: (i+1)}    

@@ -4,7 +4,7 @@ export default function Home({ setStartRecall }){
     return (
         <>
             <Logo>
-                <img src="./assets/logo.png"/>
+                <img src="./assets/logo.png"  alt="logo"/>
                 <Text>ZapRecall</Text>
             </Logo>
             <StartButton onClick={() => setStartRecall('deck')}>Iniciar Recall!</StartButton>
