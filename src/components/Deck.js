@@ -4,7 +4,9 @@ import Flashcard from './Flashcard';
 import Footer from './Footer';
 import Header from './Header';
 
-export default function Deck({ setStartRecall }) {
+export default function Deck(props) {
+    const {setStartRecall, goal, setGoal} = props;
+
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [footerIcon, setFooterIcon] = useState([]);
     const [outcome, setOutcome] = useState('default');
@@ -25,9 +27,10 @@ export default function Deck({ setStartRecall }) {
                     setOutcome={setOutcome} 
                     footerIcon={footerIcon}
                     setFooterIcon={setFooterIcon} 
+                    goal={goal}
                     />
-                )
-            }))}
+                    )
+                }))}
 
             <Footer 
             currentQuestion={currentQuestion} 
@@ -38,6 +41,7 @@ export default function Deck({ setStartRecall }) {
             setFooterIcon={setFooterIcon}
             setStartRecall={setStartRecall} 
             shuffleObject={shuffleObject}
+            setGoal={setGoal}
             />
         </Container>
     );

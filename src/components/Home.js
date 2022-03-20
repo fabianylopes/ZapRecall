@@ -1,15 +1,20 @@
 import styled from "styled-components";
 
-export default function Home({ setStartRecall }){
+export default function Home(props){
+    const { setStartRecall, goal, setGoal } = props;
+
     return (
         <>
             <Logo>
                 <img src="./assets/logo.png"  alt="logo"/>
                 <Text>ZapRecall</Text>
             </Logo>
-            <StartButton onClick={() => setStartRecall('deck')}>Iniciar Recall!</StartButton>
+            <Start>
+                <Input type="number" min="1" max="8" placeholder="Digite sua meta de zaps..." onChange={e => setGoal(e.target.value)}></Input>
+                <StartButton className={goal !== 0 ? "enabled" : "disabled"} onClick={() => setStartRecall('deck')}>Iniciar Recall!</StartButton>
+            </Start>
         </>
-    );
+    ); 
 }
 
 const Logo = styled.div`
@@ -29,18 +34,38 @@ const Text = styled.h1`
     line-height: 45px;
 `
 
+const Start = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+`
+
+const Input = styled.input`
+    width: 246px;
+    height: 43px;
+    background-color: #fff;
+    color: #FB6B6B;
+    padding-left: 10px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+
+    ::placeholder {
+        color: #ADADAD;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 16px;
+    }
+`
+
 const StartButton = styled.button`
     width: 246px;
     height: 54px;
-    background-color: #fff;
-    color: #D70900;
     font-weight: 400;
     font-size: 18px;
     line-height: 22px;
     font-family: 'Recursive', sans-serif;
     text-align: center;
     border-radius: 5px;
-    border: 1px solid #D70900;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
-    cursor: pointer;
 `

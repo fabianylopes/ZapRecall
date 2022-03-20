@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export default function Footer(props){
-    const { currentQuestion, totalQuestions, outcome, footerIcon, setStartRecall, setCurrentQuestion, setFooterIcon, shuffleObject } = props;
+    const { currentQuestion, totalQuestions, outcome, footerIcon, setStartRecall, setCurrentQuestion, setFooterIcon, shuffleObject, setGoal } = props;
     
     if (outcome === 'default'){
         return (
@@ -16,7 +16,7 @@ export default function Footer(props){
         return (
             <FooterBar className="end-footer">
                 <h3 className="bold">🥳 PARABÉNS!</h3>
-                <Text>Você não esqueceu de <br/>nenhum flashcard!</Text>
+                <Text>Você atingiu sua meta de zaps!</Text>
                 {currentQuestion}/{totalQuestions} CONCLUÍDOS
                 <Icons>
                     {footerIcon.map((status) => (<AddFooterIcon status={status} />))}
@@ -41,6 +41,7 @@ export default function Footer(props){
     function restart(){
         setCurrentQuestion(0);
         setFooterIcon([]);
+        setGoal(0);
         shuffleObject();
         setStartRecall('home');
     }

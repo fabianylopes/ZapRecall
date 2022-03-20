@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import { useState } from "react";
 
-let congrats = 0;
+let zaps = 0;
 
 export default function Flashcard(props) {
-    const { idCard, question, answer, currentQuestion, setCurrentQuestion, setOutcome, footerIcon, setFooterIcon } = props;
+    const { idCard, question, answer, currentQuestion, setCurrentQuestion, setOutcome, footerIcon, setFooterIcon, goal } = props;
 
     const [content, setContent] = useState('title');
     const [result, setResult] = useState('');
@@ -46,16 +46,18 @@ export default function Flashcard(props) {
         setCurrentQuestion(currentQuestion + 1);
         setFooterIcon([...footerIcon, status]);
         
-        if(status === 'zap' || status === 'almost'){
-            congrats++;
+        if(status === 'zap'){
+            zaps++;
         }
                 
-        if(currentQuestion === 7 && congrats === 8){
+        console.log(zaps);
+
+        if(currentQuestion === 7 && zaps >= goal){
             setOutcome('success');
-            congrats = 0;
-        }else if(currentQuestion === 7 && congrats < 8){
+            zaps = 0;
+        }else if(currentQuestion === 7 && zaps < goal){
             setOutcome('failure');
-            congrats = 0;
+            zaps = 0;
         }
 
     }  

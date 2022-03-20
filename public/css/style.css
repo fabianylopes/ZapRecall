@@ -51,3 +51,17 @@ body {
 .footer {
     height: 70px;
 }
+
+.enabled {
+    color: #D70900;
+    background-color: #fff;
+    border: 1px solid #D70900;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+}
+
+.disabled {
+    color: #C0C0C0;
+    background-color: #E8E8E8;
+    border: none;
+}
