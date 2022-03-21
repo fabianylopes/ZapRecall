@@ -1,5 +1,10 @@
 import styled from "styled-components";
 import { useState } from "react";
+import Go from "../assets/go.png";
+import Arrow from "../assets/arrow.png";
+import Wrong from "../assets/wrong.png";
+import Almost from "../assets/almost.png";
+import Zap from "../assets/zap.png";
 
 let zaps = 0;
 
@@ -8,22 +13,25 @@ export default function Flashcard(props) {
 
     const [content, setContent] = useState('title');
     const [result, setResult] = useState('');
-    const [iconCard, setIconCard] = useState('go');
+    const [iconCard, setIconCard] = useState(Go);
+    const [disabled, setDisabled] = useState(false);
 
     if(content === 'title'){ 
         return (
-            <Card onClick={() => setContent('question')}>
+            <Card>
                 <Text className={`"title" ${result}`}>Pergunta {idCard}</Text>
-                <img src={`./assets/${iconCard}.png`} alt="icone"/>
+                <CardButton disabled={disabled} onClick={() => setContent('question')} >
+                    <img src={iconCard} alt="icone"/>
+                </CardButton>
             </Card>
         );
     }else if (content === 'question'){
         return (
             <QuestionCard>
                 <Text>{question}</Text>
-                <Arrow onClick={() => setContent('answer')}>
-                    <img src="./assets/arrow.png"  alt="icone"/>
-                </Arrow>
+                <Turn onClick={() => setContent('answer')}>
+                    <img src={Arrow}  alt="icone"/>
+                </Turn>
             </QuestionCard>
         );
     }else if (content === 'answer'){
@@ -31,26 +39,25 @@ export default function Flashcard(props) {
             <AnswerCard>
                 <Text>{answer}</Text>
                 <ButtonsBox>   
-                    <Button className="red-button" onClick={() => handleAnswered('wrong')}>Não lembrei</Button>
-                    <Button className="yellow-button" onClick={() => handleAnswered('almost')}>Quase não lembrei</Button>
-                    <Button className="green-button" onClick={() => handleAnswered('zap')}>Zap!</Button>
+                    <Button className="red-button" onClick={() => handleAnswered(Wrong, 'wrong')}>Não lembrei</Button>
+                    <Button className="yellow-button" onClick={() => handleAnswered(Almost, 'almost')}>Quase não lembrei</Button>
+                    <Button className="green-button" onClick={() => handleAnswered(Zap, 'zap')}>Zap!</Button>
                 </ButtonsBox>
             </AnswerCard>
         );
     }  
 
-    function handleAnswered(status){
+     function handleAnswered(status, style){
+        setDisabled(true);
         setContent('title');
-        setResult(status);
+        setResult(style);
         setIconCard(status);
         setCurrentQuestion(currentQuestion + 1);
         setFooterIcon([...footerIcon, status]);
         
-        if(status === 'zap'){
+        if(status === Zap){
             zaps++;
         }
-                
-        console.log(zaps);
 
         if(currentQuestion === 7 && zaps >= goal){
             setOutcome('success');
@@ -73,15 +80,21 @@ const Card = styled.div`
     box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
     padding-right: 16px;
     padding-left: 14px;
-    cursor: pointer;
-
+    border: none;
+    
     display: flex;
     align-items: center;
     justify-content: space-between;
-
+    
     img {
-        height: 15px;
+        height: 23px;
+        cursor: pointer;
     }
+`
+
+const CardButton = styled.button`
+    border: none;
+    background-color: transparent
 `
 
 const QuestionCard = styled.div`
@@ -104,7 +117,7 @@ const Text = styled.h1`
     line-height: 22px;
 `
 
-const Arrow = styled.div`
+const Turn = styled.div`
     cursor: pointer;
 
     display: flex;

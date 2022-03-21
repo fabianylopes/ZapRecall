@@ -1,14 +1,15 @@
 import styled from "styled-components";
+import Logo from "../assets/big-logo.png";
 
 export default function Home(props){
     const { setStartRecall, goal, setGoal } = props;
 
     return (
         <>
-            <Logo>
-                <img src="./assets/logo.png"  alt="logo"/>
+            <LogoBox>
+                <img src={Logo}  alt="logo"/>
                 <Text>ZapRecall</Text>
-            </Logo>
+            </LogoBox>
             <Start>
                 <Input type="number" min="1" max="8" placeholder="Digite sua meta de zaps..." onChange={e => setGoal(e.target.value)}></Input>
                 <StartButton className={goal === '' ? "disabled" : "enabled"} onClick={() => setStartRecall('deck')}>Iniciar Recall!</StartButton>
@@ -17,7 +18,8 @@ export default function Home(props){
     ); 
 }
 
-const Logo = styled.div`
+
+const LogoBox = styled.div`
     margin-top: 148px;
     margin-bottom: 74px;
     display: flex;

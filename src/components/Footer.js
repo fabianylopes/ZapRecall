@@ -11,7 +11,7 @@ export default function Footer(props){
             <FooterBar className="footer">    
                 {currentQuestion}/{totalQuestions} CONCLUÍDOS
                 <Icons>
-                    {footerIcon.map((status) => (<AddFooterIcon status={status} />))}
+                    {footerIcon.map((status, index) => (<AddFooterIcon key={index} status={status} />))}
                 </Icons>
             </FooterBar>
         );
@@ -61,7 +61,7 @@ function FinalResult({ currentQuestion, totalQuestions, footerIcon, restart }){
             <Text>{textFooter}</Text>
             {currentQuestion}/{totalQuestions} CONCLUÍDOS
             <Icons>
-                {footerIcon.map((status) => (<AddFooterIcon status={status} />))}
+                {footerIcon.map((status, i) => (<AddFooterIcon key={i} status={status} />))}
             </Icons>
             <RestartButton onClick={restart}>REINICIAR RECALL</RestartButton>
         </FooterBar>
@@ -69,7 +69,7 @@ function FinalResult({ currentQuestion, totalQuestions, footerIcon, restart }){
 }
 
 function AddFooterIcon({ status }){
-    return <img src={`./assets/${status}.png`} alt="icone"/>;
+    return <img src={status} alt="icone"/>;
 }
 
 const FooterBar = styled.div`
