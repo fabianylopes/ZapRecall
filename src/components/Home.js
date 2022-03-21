@@ -15,14 +15,18 @@ export default function Home(props){
             </LogoBox>
             <Start>
                 <Input type="number" min="1" max="8" placeholder="Digite sua meta de zaps..." onChange={e => handleButton(e)}></Input>
-                <StartButton disabled={disabled} className={goal === '' ? "disabled" : "enabled"} onClick={() => setStartRecall('deck')}>Iniciar Recall!</StartButton>
+                <StartButton disabled={disabled} className={(goal > 0 && goal <= 8) ? "enabled" : "disabled"} onClick={() => setStartRecall('deck')}>Iniciar Recall!</StartButton>
             </Start>
         </>
     ); 
 
     function handleButton(e){
+        let goal = e.target.value;
         setGoal(e.target.value)
-        setDisabled(false);
+        
+        if(goal > 0 && goal <= 8){
+            setDisabled(false);
+        }
     }
 }
 
@@ -59,7 +63,6 @@ const Input = styled.input`
     border-radius: 5px;
     border: none;
     outline: none;
-
     ::placeholder {
         color: #ADADAD;
         font-weight: 400;
