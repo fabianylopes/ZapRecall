@@ -9,7 +9,7 @@ export default function Deck(props) {
 
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [footerIcon, setFooterIcon] = useState([]);
-    const [outcome, setOutcome] = useState('default');
+    const [outcome, setOutcome] = useState('failure');
     
     return (
         <Container>

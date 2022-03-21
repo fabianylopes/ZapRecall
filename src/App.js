@@ -4,7 +4,7 @@ import { useState } from "react";
 
 export default function App(){
     const [startRecall, setStartRecall] = useState('home');
-    const [goal, setGoal] = useState(0);
+    const [goal, setGoal] = useState('');
 
     return (
         <>

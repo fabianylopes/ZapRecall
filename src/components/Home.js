@@ -11,7 +11,7 @@ export default function Home(props){
             </Logo>
             <Start>
                 <Input type="number" min="1" max="8" placeholder="Digite sua meta de zaps..." onChange={e => setGoal(e.target.value)}></Input>
-                <StartButton className={goal !== 0 ? "enabled" : "disabled"} onClick={() => setStartRecall('deck')}>Iniciar Recall!</StartButton>
+                <StartButton className={goal === '' ? "disabled" : "enabled"} onClick={() => setStartRecall('deck')}>Iniciar Recall!</StartButton>
             </Start>
         </>
     ); 
