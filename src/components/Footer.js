@@ -48,7 +48,7 @@ export default function Footer(props){
     function restart(){
         setCurrentQuestion(0);
         setFooterIcon([]);
-        setGoal(0);
+        setGoal('');
         shuffleObject();
         setStartRecall('home');
     }

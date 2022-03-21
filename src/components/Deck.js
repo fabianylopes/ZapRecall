@@ -6,7 +6,6 @@ import Header from './Header';
 
 export default function Deck(props) {
     const {setStartRecall, goal, setGoal} = props;
-
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [footerIcon, setFooterIcon] = useState([]);
     const [outcome, setOutcome] = useState('default');

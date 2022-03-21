@@ -1,8 +1,11 @@
 import styled from "styled-components";
 import Logo from "../assets/big-logo.png";
+import { useState } from "react";
 
 export default function Home(props){
     const { setStartRecall, goal, setGoal } = props;
+
+    const [disabled, setDisabled] = useState(true);
 
     return (
         <>
@@ -11,13 +14,17 @@ export default function Home(props){
                 <Text>ZapRecall</Text>
             </LogoBox>
             <Start>
-                <Input type="number" min="1" max="8" placeholder="Digite sua meta de zaps..." onChange={e => setGoal(e.target.value)}></Input>
-                <StartButton className={goal === '' ? "disabled" : "enabled"} onClick={() => setStartRecall('deck')}>Iniciar Recall!</StartButton>
+                <Input type="number" min="1" max="8" placeholder="Digite sua meta de zaps..." onChange={e => handleButton(e)}></Input>
+                <StartButton disabled={disabled} className={goal === '' ? "disabled" : "enabled"} onClick={() => setStartRecall('deck')}>Iniciar Recall!</StartButton>
             </Start>
         </>
     ); 
-}
 
+    function handleButton(e){
+        setGoal(e.target.value)
+        setDisabled(false);
+    }
+}
 
 const LogoBox = styled.div`
     margin-top: 148px;
